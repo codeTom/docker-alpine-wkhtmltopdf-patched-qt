@@ -24,6 +24,7 @@ RUN	cd /tmp/wkhtmltopdf/qt && \
   patch -p1 -i qt-musl-iconv-no-bom.patch && \
   patch -p1 -i qt-recursive-global-mutex.patch && \
   patch -p1 -i qt-gcc8.patch && \
+  sed -i 's/asm volatile /asm /' src/3rdparty/javascriptcore/JavaScriptCore/jit/JITStubs.cpp && \
   CFLAGS=-w CPPFLAGS=-w CXXFLAGS=-w LDFLAGS=-w \
   ./configure -confirm-license -opensource \
     -prefix /usr \
